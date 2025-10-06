@@ -10,7 +10,7 @@ from matplotlib.ticker import AutoMinorLocator
 
 # -------------------- Global Configuration --------------------
 plt.rcParams.update({
-    "text.usetex": True,
+    "text.usetex": False,
     "font.family": "serif",
     "font.serif": ["Palatino"]
 })
