@@ -1,7 +1,8 @@
 # Pepcitrus UNICAMP 2025: Citrus Greening Cellular Automaton Model (SIC) + Treatment Simulator
 
-![Language: C++](https://img.shields.io/badge/Language-C++-orange.svg)
-![iGEM 2025](https://img.shields.io/badge/iGEM-2025-brightgreen.svg)
+![Language: C++](https://img.shields.io/badge/Language-C++-blue.svg)
+![Model: Citrus Greening Simulation](https://img.shields.io/badge/Model-Citrus%20Greening%20Simulation-green.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ## Abstract
 
@@ -66,8 +67,8 @@ You will need a C++ compiler that supports the C++17 standard. We recommend `g++
 
 1.  Clone the repository:
     ```sh
-    git clone [REPOSITORY_URL]
-    cd [FOLDER_NAME]
+    git clone https://github.com/LaraHissa/Pepcitrus-Unicamp-project-iGEM-2025.git
+    cd cpp_simulator
     ```
 
 2.  Compile the source code using the `main.cpp` file.
@@ -120,6 +121,14 @@ The simulation generates two primary forms of output:
 2.  **Frame-by-Frame Grid Data:** A new directory named `data_[treatment]` is created. Inside, it saves a snapshot of the entire grid state at each time step in a separate CSV file (`frame_xxxxx.csv`). This data can be used to generate videos and spatial plots of the simulation.
     * `i, j`: The coordinates of the cell on the grid.
     * `infection, callose, drug`: The state values for that specific cell.
+
+## License & Attribution
+
+Developed by the **iGEM UNICAMP 2025 Team** 
+Part of the **PepCitrus Project**, focused on computational modeling of *Citrus Greening (Huanglongbing)* and antibiotic treatment strategies. 
+© 2025 iGEM UNICAMP. 
+Licensed under the [MIT License](https://opensource.org/licenses/MIT). 
+
 
 ## Contact & Acknowledgments
 
