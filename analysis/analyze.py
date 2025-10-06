@@ -33,22 +33,6 @@ GLOBAL_SLOW_MOTION_FACTOR = 4
 
 # -------------------- Utility Functions --------------------
 
-def print_citrik():
-    """Prints Citrik, the minimal mascot."""
-    citrik_art = r"""
-            -------
-           /       \
-          /  o   o  \
-         /    \_/    \  
-         \           /
-          \---------/
-          / \     / \   
-         /   \   /   \
-            / \
-           /   \      
-          /     \
-    """
-    print(citrik_art)
 
 def load_analysis_config(file_path=CONFIG_FILE):
     """
@@ -296,7 +280,7 @@ def main():
             scenarios = ['control', 'ctx', 'tetra']
         elif user_input == 'exit':
             print("\nExiting the plots. Goodbye!")
-            print_citrik()
+           
             break
         else:
             print("\n--- Invalid choice. Please select 'control', 'ctx', 'tetra', 'all', or 'exit'. ---")

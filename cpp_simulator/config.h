@@ -40,17 +40,17 @@ struct config {
     int extraSteps = 1500;       // time steps (in days) after treatment
 
     // --- Infection Dynamics ---
-    double beta = 0.08;          // base spread probability
+    double beta = 0.07;          // base spread probability
     double r = 0.15;             // growth rate
     double Imax = 1.0;           // cell's carrying capacity (max load)
     double d = 0.7;              // efficacy of callose in suppressing infection
-    double deltaI = 0.001;       // natural death rate of the 'bacteria'
+    double deltaI = 0.001;         // natural death rate of the 'bacteria'
 
     // --- Defense Dynamics (Callose) ---
     double alphaC = 0.6;        // callose production rate
-    double deltaC = 0.001;        // callose degradation rate 
+    double deltaC = 0.01;        // callose degradation rate 
     double Climit = 1.0;         // max callose level per cell
-    int signalR = 6;             // signaling radius to activate defense
+    int signalR = 6 ;             // signaling radius to activate defense
 
     // --- Treatment Settings ---
     drug_params CTXparams = {15.0 / 80.0, 0.40, 2.0, 3.0, 14.0, 100.0};
