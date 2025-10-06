@@ -1,0 +1,20 @@
+
+venv/
+.venv/
+
+
+*.pdf
+*.mp4
+*.csv
+
+
+data_control/
+data_ctx/
+data_tetra/
+
+
+*.o
+*.out
+*.exe# Python environments
+venv/
+.venv/
