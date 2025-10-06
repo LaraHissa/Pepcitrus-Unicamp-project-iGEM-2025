@@ -9,17 +9,16 @@ from tqdm import tqdm
 from matplotlib.ticker import AutoMinorLocator
 
 # -------------------- Global Configuration --------------------
-plt.rcParams.update({
-    "text.usetex": False,
-    "font.family": "serif",
-    "font.serif": ["Palatino"]
-})
+#plt.rcParams.update({
+ #   "text.usetex": False,
+  #  "font.family": "serif",
+   # "font.serif": ["Palatino"]
+#})
 
 # --- Directory Configuration ---
-# **CORREÇÃO:** Define o caminho para a pasta que contém os dados (cpp_simulator), 
-# assumindo que o script é executado DE DENTRO da pasta 'analyses'.
+
 SIMULATOR_ROOT = os.path.join('..', 'cpp_simulator')
-CONFIG_FILE = os.path.join('..', 'config_analysis.json') # Assume o config.json também está fora da pasta analyses
+CONFIG_FILE = os.path.join('..', 'config_analysis.json') 
 
 # --- Video Parameters (Fixed, internal to the code) ---
 GLOBAL_FPS = 50
@@ -64,7 +63,6 @@ def load_data(scenario):
     """
     Loads the time series CSV data specific to the scenario from the SIMULATOR_ROOT.
     """
-    # CORREÇÃO: Constrói o caminho completo para o arquivo CSV de resultados
     file_path = os.path.join(SIMULATOR_ROOT, f"results_{scenario.lower()}.csv")
     
     if not os.path.exists(file_path):
@@ -132,7 +130,6 @@ def plot_data(df, scenario, plot_params):
     ax.legend(fontsize=12)
     plt.tight_layout()
     
-    # O arquivo PDF de saída é salvo no diretório de execução (analyses/)
     output_file = f'plot_results_{scenario.lower()}.pdf'
     plt.savefig(output_file, format='pdf')
     print(f"Figure saved as {output_file}")
@@ -187,7 +184,6 @@ def generate_simulation_video(scenario, treatment_start_day):
     """
     Generates a video from frame CSVs for the specified scenario.
     """
-    # CORREÇÃO: Usa SIMULATOR_ROOT para construir o caminho correto para a pasta de dados.
     DATA_DIR = os.path.join(SIMULATOR_ROOT, f'data_{scenario.lower()}')
     VIDEO_FILENAME = f'simulation_{scenario.lower()}.mp4'
     
@@ -197,7 +193,6 @@ def generate_simulation_video(scenario, treatment_start_day):
         print(f"ERROR: Data directory '{DATA_DIR}' not found. Cannot generate video.")
         return 
 
-    # Garante que a ordenação dos arquivos seja numérica
     data_files = sorted(glob.glob(os.path.join(DATA_DIR, 'frame_*.csv')), 
                         key=lambda x: int(os.path.basename(x).split('_')[1].split('.')[0]))
 
@@ -208,7 +203,6 @@ def generate_simulation_video(scenario, treatment_start_day):
     print(f"Found {len(data_files)} frames. Initializing video writer for '{VIDEO_FILENAME}'...")
 
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-    # O arquivo de vídeo de saída é salvo no diretório de execução (analyses/)
     video_writer = cv2.VideoWriter(VIDEO_FILENAME, fourcc, GLOBAL_FPS, (GLOBAL_FRAME_WIDTH, GLOBAL_FRAME_HEIGHT))
 
     last_frame_processed = None
