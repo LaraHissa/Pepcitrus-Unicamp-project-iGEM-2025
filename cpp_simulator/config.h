@@ -48,7 +48,7 @@ struct config {
 
     // --- Defense Dynamics (Callose) ---
     double alphaC = 0.6;        // callose production rate
-    double deltaC = 0.01;        // callose degradation rate 
+    double deltaC = 0.001;        // callose degradation rate 
     double Climit = 1.0;         // max callose level per cell
     int signalR = 6;             // signaling radius to activate defense
 

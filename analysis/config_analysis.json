@@ -1,0 +1,6 @@
+
+{
+    "effect_window_days": 150,
+    "treatment_start_day": 1000,
+    "num_years_treatment": 4
+}
