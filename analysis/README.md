@@ -1,4 +1,4 @@
-# 📊 Pepcitrus UNICAMP 2025: Simulation Data Analysis and Visualization
+# 🍊 Pepcitrus UNICAMP 2025: Simulation Data Analysis and Visualization
 
 ![Language: Python](https://img.shields.io/badge/Language-Python-blue.svg)
 ![Libraries: Pandas, Matplotlib, OpenCV](https://img.shields.io/badge/Libraries-Pandas%2C%20Matplotlib%2C%20OpenCV-yellow.svg)
@@ -124,7 +124,7 @@ The `analyze.py` script is divided into clear functional blocks:
 
 ## License & Attribution
 
-Developed by the **iGEM UNICAMP 2025 Team** 🧪  
+Developed by the **iGEM UNICAMP 2025 Team** 
 Part of the **Pepcitrus Project**, focused on computational modeling of Citrus Greening treatment strategies.  
 
 © 2025 iGEM UNICAMP.  

@@ -1,4 +1,4 @@
-# Pepcitrus UNICAMP 2025: Citrus Greening Cellular Automaton Model (SIC) + Treatment Simulator
+#🍊 Pepcitrus UNICAMP 2025: Citrus Greening Cellular Automaton Model (SIC) + Treatment Simulator
 
 ![Language: C++](https://img.shields.io/badge/Language-C++-blue.svg)
 ![Model: Citrus Greening Simulation](https://img.shields.io/badge/Model-Citrus%20Greening%20Simulation-green.svg)

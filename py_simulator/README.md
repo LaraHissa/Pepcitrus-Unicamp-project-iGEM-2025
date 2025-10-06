@@ -1,4 +1,4 @@
-# Pepcitrus UNICAMP 2025: Citrus Greening Cellular Automaton Model (SIC) + Treatment Simulator
+#🍊 Pepcitrus UNICAMP 2025: Citrus Greening Cellular Automaton Model (SIC) + Treatment Simulator
 
 ![Language: Python](https://img.shields.io/badge/Language-Python-blue.svg)
 ![Dependencies: NumPy](https://img.shields.io/badge/Dependencies-NumPy-D00064.svg)
@@ -153,6 +153,6 @@ Licensed under the [MIT License](https://opensource.org/licenses/MIT).
 This model was developed by **Pepcitrus UNICAMP iGEM 2025 team**.
 
 For questions or collaborations, please contact: 
-📧 `l171513@dac.unicamp.br` or `igem@unicamp.br`
+ `l171513@dac.unicamp.br` or `igem@unicamp.br`
 
 We would like to thank the iGEM Foundation and all our sponsors for making this competition possible.
