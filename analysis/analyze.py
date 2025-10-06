@@ -15,6 +15,12 @@ plt.rcParams.update({
     "font.serif": ["Palatino"]
 })
 
+# --- Directory Configuration ---
+# **CORREÇÃO:** Define o caminho para a pasta que contém os dados (cpp_simulator), 
+# assumindo que o script é executado DE DENTRO da pasta 'analyses'.
+SIMULATOR_ROOT = os.path.join('..', 'cpp_simulator')
+CONFIG_FILE = os.path.join('..', 'config_analysis.json') # Assume o config.json também está fora da pasta analyses
+
 # --- Video Parameters (Fixed, internal to the code) ---
 GLOBAL_FPS = 50
 GLOBAL_GRID_SIZE = 50
@@ -23,16 +29,30 @@ GLOBAL_FRAME_WIDTH = GLOBAL_GRID_SIZE * GLOBAL_UPSCALE_FACTOR
 GLOBAL_FRAME_HEIGHT = GLOBAL_GRID_SIZE * GLOBAL_UPSCALE_FACTOR
 GLOBAL_SECONDS_TO_HOLD_END_FRAME = 5 
 GLOBAL_SLOW_MOTION_DURATION = 150 
-GLOBAL_SLOW_MOTION_FACTOR = 4      
+GLOBAL_SLOW_MOTION_FACTOR = 4     
 
 # -------------------- Utility Functions --------------------
 
-
-
-def load_analysis_config(file_path='config_analysis.json'):
+def print_citrik():
+    """Prints Citrik, the minimal mascot."""
+    citrik_art = r"""
+            -------
+           /       \
+          /  o   o  \
+         /    \_/    \  
+         \           /
+          \---------/
+          / \     / \   
+         /   \   /   \
+            / \
+           /   \      
+          /     \
     """
-    Loads configuration parameters from a JSON file.
-    Returns only the top-level plot parameters.
+    print(citrik_art)
+
+def load_analysis_config(file_path=CONFIG_FILE):
+    """
+    Loads configuration parameters from a JSON file using the correct relative path.
     """
     default_params = {
         "effect_window_days": 150,
@@ -56,18 +76,23 @@ def load_analysis_config(file_path='config_analysis.json'):
             return default_params
 
 # -------------------- Plotting Functions --------------------
-def load_data(file_path):
+def load_data(scenario):
     """
-    Loads the time series CSV data and calculates time in days.
+    Loads the time series CSV data specific to the scenario from the SIMULATOR_ROOT.
     """
+    # CORREÇÃO: Constrói o caminho completo para o arquivo CSV de resultados
+    file_path = os.path.join(SIMULATOR_ROOT, f"results_{scenario.lower()}.csv")
+    
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"Time series data file '{file_path}' not found.")
+        
     df = pd.read_csv(file_path)
-    df['days'] = df['time'] * 1.0  
+    df['days'] = df['time'] * 1.0 
     return df
 
 def plot_data(df, scenario, plot_params):
     """
-    Plots the chosen treatment scenario and saves the figure as PDF,
-    using parameters passed via the config dictionary.
+    Plots the chosen treatment scenario and saves the figure as PDF.
     """
     effect_window = plot_params['effect_window_days']  
     treatment_start = plot_params['treatment_start_day'] 
@@ -123,6 +148,7 @@ def plot_data(df, scenario, plot_params):
     ax.legend(fontsize=12)
     plt.tight_layout()
     
+    # O arquivo PDF de saída é salvo no diretório de execução (analyses/)
     output_file = f'plot_results_{scenario.lower()}.pdf'
     plt.savefig(output_file, format='pdf')
     print(f"Figure saved as {output_file}")
@@ -175,10 +201,10 @@ def create_video_frame_continuous(data_file):
 
 def generate_simulation_video(scenario, treatment_start_day):
     """
-    Generates a video from frame CSVs for the specified scenario, 
-    using internal/global video parameters and the dynamic treatment start day.
+    Generates a video from frame CSVs for the specified scenario.
     """
-    DATA_DIR = f'data_{scenario.lower()}'
+    # CORREÇÃO: Usa SIMULATOR_ROOT para construir o caminho correto para a pasta de dados.
+    DATA_DIR = os.path.join(SIMULATOR_ROOT, f'data_{scenario.lower()}')
     VIDEO_FILENAME = f'simulation_{scenario.lower()}.mp4'
     
     print(f"\n--- Starting Video Generation for '{scenario.upper()}' ---")
@@ -187,6 +213,7 @@ def generate_simulation_video(scenario, treatment_start_day):
         print(f"ERROR: Data directory '{DATA_DIR}' not found. Cannot generate video.")
         return 
 
+    # Garante que a ordenação dos arquivos seja numérica
     data_files = sorted(glob.glob(os.path.join(DATA_DIR, 'frame_*.csv')), 
                         key=lambda x: int(os.path.basename(x).split('_')[1].split('.')[0]))
 
@@ -197,6 +224,7 @@ def generate_simulation_video(scenario, treatment_start_day):
     print(f"Found {len(data_files)} frames. Initializing video writer for '{VIDEO_FILENAME}'...")
 
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    # O arquivo de vídeo de saída é salvo no diretório de execução (analyses/)
     video_writer = cv2.VideoWriter(VIDEO_FILENAME, fourcc, GLOBAL_FPS, (GLOBAL_FRAME_WIDTH, GLOBAL_FRAME_HEIGHT))
 
     last_frame_processed = None
@@ -218,7 +246,6 @@ def generate_simulation_video(scenario, treatment_start_day):
         except:
             time_step = -1
 
-        
         if TREATMENT_START_DAY <= time_step < slow_motion_end_day:
             for _ in range(SLOW_MOTION_FACTOR):
                 video_writer.write(bgr_frame)
@@ -243,16 +270,14 @@ def main():
     print("="*55)
     print(" Pepcitrus Unicamp - iGEM Project Simulation Analysis Tool")
     print("-"*55)
-    print(" This tool generates time-series plots and video visualizations")
-    print(" for the CLas infection model under different therapeutic scenarios.")
-    print(" Note: Selecting a scenario runs BOTH Plot and Video generation.")
+    print(f" Data will be loaded from the root: '{SIMULATOR_ROOT}/'")
+    print(" Note: Data files must be organized inside this folder.")
     print("-"*55)
     print(" Reading plotting parameters from 'config_analysis.json'.")
-    print(" Edit the JSON file to adjust treatment start and effect window.")
+    print(" The config file is expected at the root (not inside analyses/).")
     print("="*55 + "\n")
     
     plot_params = load_analysis_config()
-    
     treatment_start_day = plot_params.get('treatment_start_day', 1000)
 
     while True:
@@ -271,6 +296,7 @@ def main():
             scenarios = ['control', 'ctx', 'tetra']
         elif user_input == 'exit':
             print("\nExiting the plots. Goodbye!")
+            print_citrik()
             break
         else:
             print("\n--- Invalid choice. Please select 'control', 'ctx', 'tetra', 'all', or 'exit'. ---")
@@ -280,16 +306,18 @@ def main():
             print(f"\n[SCENARIO: {scenario.upper()}] Starting full analysis...")
             
             df_current = None
-            data_file = f"results_{scenario.lower()}.csv"
             
+            # 1. Load Data for Plotting
             try:
-                df_current = load_data(data_file)
-            except FileNotFoundError:
-                print(f"ERROR: Time series data file '{data_file}' not found. Cannot generate plot for this scenario.")
+                df_current = load_data(scenario)
+            except FileNotFoundError as e:
+                print(f"ERROR: {e}. Cannot generate plot for this scenario.")
             
+            # 2. Plot Generation
             if df_current is not None:
                 plot_data(df_current, scenario, plot_params)
             
+            # 3. Video Generation
             generate_simulation_video(scenario, treatment_start_day)
         
         print(f"\nAnalysis complete for {', '.join(scenarios)}.")
