@@ -94,7 +94,7 @@ def plot_data(df, scenario, plot_params):
             infection_val = df.loc[df['days']==application_day, 'mean_infection'].values[0]
             
             if scenario.lower() == 'tetra':
-                ax.axvspan(application_day, application_day + effect_window, color='green', alpha=0.3, label=r'Tetracycline effect (150 days)')
+                ax.axvspan(application_day, application_day + effect_window, color='green', alpha=0.3, label=r'Oxytetracycline effect (150 days)')
             
             ax.plot(application_day, infection_val,
                     marker='*', color='green', markersize=15, label=r'Start of Treatment')
@@ -262,7 +262,7 @@ def main():
         print("\nSelect a scenario (Plot and Video will run for the chosen option):")
         print("  'control' -> No drug treatment")
         print("  'ctx'     -> CTX (bactericidal) treatment")
-        print("  'tetra'   -> Tetracycline (bacteriostatic) treatment")
+        print("  'tetra'   -> Oxytetracycline (bacteriostatic) treatment")
         print("  'all'     -> Run all scenarios")
         print("  'exit'    -> Quit the program")
         user_input = input("Enter your choice: ").strip().lower()

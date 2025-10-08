@@ -43,7 +43,7 @@ def main():
         print("Please select a simulation scenario or action:")
         print("  'control' -> No drug treatment")
         print("  'ctx'     -> CTX (bactericidal) treatment")
-        print("  'tetra'   -> Tetracycline (bacteriostatic) treatment")
+        print("  'tetra'   -> Oxytetracycline (bacteriostatic) treatment")
         print("  'all'     -> Run all scenarios (control, ctx, tetra)")
         print("  'exit'    -> Quit the program")
         user_input = input("Enter your choice: ").strip().lower()

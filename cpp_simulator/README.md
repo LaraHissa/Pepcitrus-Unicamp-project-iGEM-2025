@@ -1,4 +1,4 @@
-#🍊 Pepcitrus UNICAMP 2025: Citrus Greening Cellular Automaton Model (SIC) + Treatment Simulator
+# 🍊 Pepcitrus UNICAMP 2025: Citrus Greening Cellular Automaton Model (SIC) + Treatment Simulator
 
 ![Language: C++](https://img.shields.io/badge/Language-C++-blue.svg)
 ![Model: Citrus Greening Simulation](https://img.shields.io/badge/Model-Citrus%20Greening%20Simulation-green.svg)
@@ -29,7 +29,7 @@ This repository contains the source code for the computational model developed b
 
 Citrus Greening, or HLB, is the most destructive disease threatening global citrus production. While vector control is essential, it alone is insufficient to save already infected trees. Our iGEM project, Pepcitrus, aims to develop a novel therapeutic based on an antimicrobial peptide (CTX) to treat infected plants from the inside out.
 
-To guide our experimental design and understand the complex dynamics of the disease, we developed this computational model. It allows us to explore spatial-temporal patterns of bacterial spread, quantify the impact of the plant's immune response (callose deposition), and, most importantly, generate testable hypotheses about the efficacy and optimal application strategy for our CTX peptide and other treatments like tetracycline.
+To guide our experimental design and understand the complex dynamics of the disease, we developed this computational model. It allows us to explore spatial-temporal patterns of bacterial spread, quantify the impact of the plant's immune response (callose deposition), and, most importantly, generate testable hypotheses about the efficacy and optimal application strategy for our CTX peptide and other treatments like Oxytetracycline.
 
 For a full description of our project, please visit our **Official iGEM Wiki**.
 
@@ -40,7 +40,7 @@ For a full description of our project, please visit our **Official iGEM Wiki**.
     1.  `Infection`: Manages bacterial growth, death, and spatial spread.
     2.  `Callose`: Simulates the primary host defense mechanism.
     3.  `Therapeutic`: Models the pharmacokinetics and pharmacodynamics of treatments.
-* **Detailed Pharmacodynamics:** Accurately models the distinct mechanisms of action for our **bactericidal** peptide (CTX) and a benchmark **bacteriostatic** antibiotic (Tetracycline).
+* **Detailed Pharmacodynamics:** Accurately models the distinct mechanisms of action for our **bactericidal** peptide (CTX) and a benchmark **bacteriostatic** antibiotic (Oxytetracycline).
 * **Highly Configurable:** All key biological and simulation parameters are centralized in the `config.h` file, allowing for easy experimentation and calibration without altering the core logic.
 * **Efficient & Portable:** Written in modern C++ for high performance, with no external dependencies beyond a standard C++ compiler.
 
@@ -91,7 +91,7 @@ Once compiled, you can run the simulation from your terminal. The program will p
 2.  You will be prompted to select a scenario. The available options are:
     * `control`: Simulates the disease progression with no drug treatment.
     * `ctx`: Simulates the application of our bactericidal CTX peptide after an initial infection period.
-    * `tetra`: Simulates the application of the bacteriostatic Tetracycline antibiotic.
+    * `tetra`: Simulates the application of the bacteriostatic Oxytetracycline antibiotic.
 
 3.  After you enter your choice, the simulation will begin. Progress will be printed to the console, and output data will be saved to the directory from which you ran the program.
 

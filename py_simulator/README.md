@@ -1,4 +1,4 @@
-#🍊 Pepcitrus UNICAMP 2025: Citrus Greening Cellular Automaton Model (SIC) + Treatment Simulator
+# 🍊 Pepcitrus UNICAMP 2025: Citrus Greening Cellular Automaton Model (SIC) + Treatment Simulator
 
 ![Language: Python](https://img.shields.io/badge/Language-Python-blue.svg)
 ![Dependencies: NumPy](https://img.shields.io/badge/Dependencies-NumPy-D00064.svg)
@@ -30,7 +30,7 @@ This repository contains the source code for the computational model developed b
 
 Citrus Greening is the most destructive disease threatening global citrus production. While vector control is essential, it alone is insufficient to save already infected trees. Our iGEM project, Pepcitrus, aims to develop a novel therapeutic based on an antimicrobial peptide (CTX) to treat infected plants from the inside out.
 
-To guide our experimental design and understand the complex dynamics of the disease, we developed this computational model. It allows us to explore spatial-temporal patterns of bacterial spread, quantify the impact of the plant's immune response (**callose deposition**), and, most importantly, generate testable hypotheses about the efficacy and optimal application strategy for our CTX peptide and other treatments like tetracycline.
+To guide our experimental design and understand the complex dynamics of the disease, we developed this computational model. It allows us to explore spatial-temporal patterns of bacterial spread, quantify the impact of the plant's immune response (**callose deposition**), and, most importantly, generate testable hypotheses about the efficacy and optimal application strategy for our CTX peptide and other treatments like Oxytetracycline.
 
 For a full description of our project, please visit our **Official iGEM Wiki**.
 
@@ -38,10 +38,10 @@ For a full description of our project, please visit our **Official iGEM Wiki**.
 
 ## Model Features
 
-* **Spatial-Temporal Dynamics:** Uses a **2D cellular automaton** (50x50 grid) to model how the infection spreads from cell to cell over time.  
-* **Modular Design:** The system is broken down into logical, interacting modules (`Infection`, `Callose`, `Therapeutic`).  
-* **Pharmacodynamics:** Accurately models the distinct mechanisms of action for our **bactericidal** peptide (CTX) and a benchmark **bacteriostatic** antibiotic (Tetracycline).  
-* **Highly Configurable:** All key biological and simulation parameters are centralized in the **`config.py`** file for easy experimentation.  
+* **Spatial-Temporal Dynamics:** Uses a **2D cellular automaton** (50x50 grid) to model how the infection spreads from cell to cell over time. 
+* **Modular Design:** The system is broken down into logical, interacting modules (`Infection`, `Callose`, `Therapeutic`). 
+* **Pharmacodynamics:** Accurately models the distinct mechanisms of action for our **bactericidal** peptide (CTX) and a benchmark **bacteriostatic** antibiotic (Oxytetracycline). 
+* **Highly Configurable:** All key biological and simulation parameters are centralized in the **`config.py`** file for easy experimentation. 
 * **Performance:** Written in Python and utilizes **NumPy** for efficient grid operations and fast matrix calculations.
 
 ---
@@ -54,7 +54,7 @@ Follow these instructions to set up and run the simulator on your local machine.
 
 You need **Python 3** and the **NumPy** library.
 
-1. **Install Python:** Ensure you have Python 3 installed.  
+1. **Install Python:** Ensure you have Python 3 installed. 
 2. **Install NumPy:** Open your terminal and install the required dependency:
    ```bash
    pip install numpy
@@ -99,7 +99,7 @@ The simulation is executed through an interactive command-line menu.
 3. You will be prompted to **select a scenario**. The available options are:
    * `control`: Simulates the disease progression with no drug treatment. 
    * `ctx`: Simulates the application of our bactericidal CTX peptide. 
-   * `tetra`: Simulates the application of the bacteriostatic Tetracycline antibiotic. 
+   * `tetra`: Simulates the application of the bacteriostatic Oxytetracycline antibiotic. 
    * `all`: Runs all three scenarios sequentially.
 
 ---

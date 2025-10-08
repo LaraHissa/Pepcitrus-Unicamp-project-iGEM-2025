@@ -48,7 +48,7 @@ int main() {
         std::cout << "Please select a simulation scenario or action:\n";
         std::cout << "  'control' -> No drug treatment\n";
         std::cout << "  'ctx'     -> CTX (bactericidal) treatment\n";
-        std::cout << "  'tetra'   -> Tetracycline (bacteriostatic) treatment\n";
+        std::cout << "  'tetra'   -> Oxytetracycline (bacteriostatic) treatment\n";
         std::cout << "  'all'     -> Run all scenarios (control, ctx, tetra)\n";
         std::cout << "  'exit'    -> Quit the program\n";
         std::cout << "Enter your choice: " << std::flush;

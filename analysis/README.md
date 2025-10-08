@@ -81,7 +81,7 @@ You should edit this file to match the exact parameters used in the C++ simulati
 
 | Parameter Key | Description | Default Value | Usage |
 | :--- | :--- | :--- | :--- |
-| `"effect_window_days"` | Duration of the drug's effect window (used for Tetracycline annotation). | `150` | `plot_data` |
+| `"effect_window_days"` | Duration of the drug's effect window (used for Oxytetracycline annotation). | `150` | `plot_data` |
 | `"treatment_start_day"` | The specific day the first treatment application begins. | `1000` | Used by **both** `plot_data` and `generate_simulation_video`. |
 | `"num_years_treatment"` | Total number of annual treatments to display on the plot. | `4` | `plot_data` |
 
